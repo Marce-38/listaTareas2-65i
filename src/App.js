@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
 import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import Heading from './components/Heading';
+import Subheading from './components/Subheading';
+import { Container } from 'react-bootstrap';
+import FormTask from './components/FormTask';
 
 function App() {
+  const [enabled, setEnabled] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Container>
+        <Heading classroom='65i' enable={enabled}/>
+        <Subheading/>
+        <div className="text-center">
+          <button className='btn btn-primary text-center' onClick={()=> setEnabled(!enabled)}>
+            {enabled ? 'Desabilitar' : 'Habilitar'}</button>
+        </div>
+        <FormTask></FormTask>
+      </Container>
     </div>
   );
 }
